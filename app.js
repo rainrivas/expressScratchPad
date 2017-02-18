@@ -19,7 +19,12 @@ app.get("/dog", function(req, res) {
 });
 
 app.get("/r/:subReddit", function(req, res) {
-    res.send("Sample subreddit for showing pattern matches");
+    var subReddit = req.params.subReddit;
+    res.send("Sample subreddit for showing pattern matches. Welcome to " + subReddit);
+});
+
+app.get("/r/:subReddit/comments/:id/:title/", function(req, res) {
+    res.send("Sample subreddit comments pattern matches for " + req.params.subReddit + " / " + req.params.id + " / " + req.params.title);
 });
 
 // order of routes matter, so catch-all should be last or else it will ALWAYS run
