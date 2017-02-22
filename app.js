@@ -6,25 +6,31 @@ var express = require('express'),
 //////////////////
 
 app.get("/", function(req, res) {
-    res.send("Hi there");
+    res.send("Hi there, welcome to my assignment!");
 });
 
-app.get("/bye", function(req, res) {
-    res.send("Goodbye");
+app.get("/speak/:animal", function(req, res) {
+    var animal = req.params.subReddit;
+    var noise = ""
+    if (animal === "pig") {
+        noise = "Oink"
+    }
+    if (animal === "cow") {
+        noise = "Moo"
+    }
+    if (animal === "dog") {
+        noise = "Woof Woof!"
+    }
+
+    res.send("The " + animal + " says " + noise);
 });
 
-app.get("/dog", function(req, res) {
-    console.log("Dog req made, give res");
-    res.send("Bork bork");
-});
-
-app.get("/r/:subReddit", function(req, res) {
-    var subReddit = req.params.subReddit;
-    res.send("Sample subreddit for showing pattern matches. Welcome to " + subReddit);
-});
-
-app.get("/r/:subReddit/comments/:id/:title/", function(req, res) {
-    res.send("Sample subreddit comments pattern matches for " + req.params.subReddit + " / " + req.params.id + " / " + req.params.title);
+app.get("/repeat/:phrase/:iterations/", function(req, res) {
+    var phraseArray = new Array(req.params.iterations)
+    for (i = 0; i < req.params.iterations; i++) {
+        phraseArray[i]=req.params.phrase;
+    }
+    res.send(phraseArray.join(' '));
 });
 
 // order of routes matter, so catch-all should be last or else it will ALWAYS run
