@@ -10,25 +10,21 @@ app.get("/", function(req, res) {
 });
 
 app.get("/speak/:animal", function(req, res) {
-    var animal = req.params.subReddit;
-    var noise = ""
-    if (animal === "pig") {
-        noise = "Oink"
-    }
-    else if (animal === "cow") {
-        noise = "Moo"
-    }
-    else (animal === "dog") {
-        noise = "Woof Woof!"
-    }
+    var animal = req.params.animal.toLowerCase();
+    var noise = {
+        pig: "Oink",
+        cow: "Moo",
+        dog: "Woof Woof!",
+        cat: "Meow"
+    };
 
-    res.send("The " + animal + " says " + noise);
+    res.send("The " + animal + " says '" + noise[animal] + "'");
 });
 
 app.get("/repeat/:phrase/:iterations/", function(req, res) {
     var phraseArray = new Array(req.params.iterations)
     for (i = 0; i < req.params.iterations; i++) {
-        phraseArray[i]=req.params.phrase;
+        phraseArray[i] = req.params.phrase;
     }
     res.send(phraseArray.join(' '));
 });
