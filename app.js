@@ -25,6 +25,7 @@ app.get("/repeat/:phrase/:iterations/", function(req, res) {
     var phraseArray = new Array(req.params.iterations)
     for (i = 0; i < req.params.iterations; i++) {
         phraseArray[i] = req.params.phrase;
+        // alternativly you can have a string stringMess += req.params.phrase + " ";
     }
     res.send(phraseArray.join(' '));
 });
