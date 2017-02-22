@@ -15,10 +15,10 @@ app.get("/speak/:animal", function(req, res) {
     if (animal === "pig") {
         noise = "Oink"
     }
-    if (animal === "cow") {
+    else if (animal === "cow") {
         noise = "Moo"
     }
-    if (animal === "dog") {
+    else (animal === "dog") {
         noise = "Woof Woof!"
     }
 
