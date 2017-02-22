@@ -1,40 +1,28 @@
-var express = require('express'),
-    app = express();
+// EJS demo
 
-//////////////////
-// Routes
-//////////////////
+var express = require('express');
+var app = express();
 
+// routes
 app.get("/", function(req, res) {
-    res.send("Hi there, welcome to my assignment!");
+    // res.send("<h1>Welcome to EJS Demo Start page</h1><h2>Amaze balls H2</h2>"); // while this is do-able, it's ridiculous to go this route
+    // instead of doing the above, we'll just do a render to render an HTML file.
+    // the html files we render are templates (not some basic html file)
+    res.render('home.ejs'); // ejs --> embedded javascript
 });
 
-app.get("/speak/:animal", function(req, res) {
-    var animal = req.params.animal.toLowerCase();
-    var noise = {
-        pig: "Oink",
-        cow: "Moo",
-        dog: "Woof Woof!",
-        cat: "Meow"
-    };
-
-    res.send("The " + animal + " says '" + noise[animal] + "'");
+app.get("/fallinlovewith/:thing", function(req, res) {
+    var thing = req.params.thing;
+    // res.send("You fell in love with " + thing); // In addition to doing something like this, you can send EJS files on the fly
+    // RENDER Looks inside views directly (it's waht express does);
+    res.render('love.ejs', { thingWeLove: thing }); // you can pass an object of params to render and will assign them to variables in the EJS fail which match the key
 });
 
-app.get("/repeat/:phrase/:iterations/", function(req, res) {
-    var phraseArray = new Array(req.params.iterations)
-    for (i = 0; i < req.params.iterations; i++) {
-        phraseArray[i] = req.params.phrase;
-        // alternativly you can have a string stringMess += req.params.phrase + " ";
-    }
-    res.send(phraseArray.join(' '));
+app.get("/random",function(req,res){
+	res.render('randomdata.ejs');
 });
 
-// order of routes matter, so catch-all should be last or else it will ALWAYS run
-app.get("*", function(req, res) {
-    res.send("But gwhy you look for nonsense?");
-});
 
 app.listen(3000, function() {
-    console.log("Sever started on port: 3000");
+    console.log("Listening on port 3000");
 });

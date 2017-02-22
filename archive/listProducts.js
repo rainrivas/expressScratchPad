@@ -11,4 +11,4 @@ console.log("======================\nWELCOME TO THUNDEROME!\n===================
 products.forEach(function(current) {
     console.log(current.productName + " - $" + current.price);
 });
-console.log("======================")
+console.log("======================");

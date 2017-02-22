@@ -1,0 +1,23 @@
+{
+  "name": "demo-app",
+  "version": "1.0.0",
+  "description": "Demo app to work with express and other node libraries",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.1",
+    "faker": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learning",
+    "demo",
+    "express",
+    "node",
+    "training"
+  ],
+  "author": "Rain",
+  "license": "ISC"
+}
