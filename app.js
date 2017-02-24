@@ -18,9 +18,18 @@ app.get("/fallinlovewith/:thing", function(req, res) {
     res.render('love.ejs', { thingWeLove: thing }); // you can pass an object of params to render and will assign them to variables in the EJS fail which match the key
 });
 
-app.get("/random",function(req,res){
-	res.render('randomdata.ejs');
+app.get("/random", function(req, res) {
+    res.render('randomdata.ejs');
 });
+
+app.get("/posts", function(req, res) {
+    var posts = [
+        { title: "Post 1", author: "Susy" },
+        { title: "Post 2", author: "Chuck" },
+        { title: "Post 3", author: "Becky" }
+    ];
+    res.render("posts.ejs", { posts: posts });
+})
 
 
 app.listen(3000, function() {
