@@ -10,22 +10,22 @@ app.get('/', function(req, res) {
 });
 
 app.get('/results', function(req, res) {
-    request("http://www.omdbapi.com/?s=star", function(error, response, body) {
+	var query = req.query.search;
+	var url = "https://www.omdbapi.com/?s=" + query;
+    request(url, function(error, response, body) {
         if (!error && response.statusCode === 200) {
             var movies = JSON.parse(body);
-            console.log(movies);
-            res.send(movies);
+            res.render("results", { movies: movies }); // ejsVarName: localFileVarName
         } else {
             console.log(error);
             res.send("We hit an error")
         }
     });
-    // res.send("Good we working");
 });
 
-app.post("/search", function(req, res) {
-    res.redirect('/results');
-});
+// app.post("/results", function(req, res) {
+//     res.redirect('/results');
+// });
 
 app.listen(3000, function() {
     console.log("App running on port 3000");

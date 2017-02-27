@@ -11,11 +11,11 @@
     "express": "^4.14.1",
     "request": "^2.79.0"
   },
-  "engines":{
+  "engines": {
     "node": "6.9.x"
   },
-  "repository":{
-    "url":"https://gomix.com/#!/project/rightful-dish"
+  "repository": {
+    "url": "https://gomix.com/#!/project/rightful-dish"
   },
   "author": "Rain",
   "license": "MIT",
