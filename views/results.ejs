@@ -1,4 +1,9 @@
 <h1>Movie Results</h1>
 <% movies.Search.forEach(function(currentMovie){ %>
-	<li><%= currentMovie.Title %></li>	
+	<ul>
+		<li>
+			<strong><%= currentMovie.Title %></strong> - <%= currentMovie.Year%>
+		</li>	
+	</ul>
 <% }) %>
+<a href="/">Search Again</a>
